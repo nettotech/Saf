@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AC38584E1ED4CAD80049D331 /* transacaoCelula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38584D1ED4CAD80049D331 /* transacaoCelula.swift */; };
 		AC38768B1EDA0FD700B55CDB /* DetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38768A1EDA0FD700B55CDB /* DetalheViewController.swift */; };
+		AC56BDCF1F01A56600FF7610 /* SafModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC56BDCD1F01A56600FF7610 /* SafModel.xcdatamodeld */; };
+		AC56BDD11F01AA6100FF7610 /* CoreDataSaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56BDD01F01AA6000FF7610 /* CoreDataSaf.swift */; };
 		AC668D171ED4B2E100038EB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC668D161ED4B2E100038EB6 /* AppDelegate.swift */; };
 		AC668D191ED4B2E200038EB6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC668D181ED4B2E200038EB6 /* ViewController.swift */; };
 		AC668D1C1ED4B2E200038EB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC668D1A1ED4B2E200038EB6 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		AC38584D1ED4CAD80049D331 /* transacaoCelula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = transacaoCelula.swift; sourceTree = "<group>"; };
 		AC38768A1EDA0FD700B55CDB /* DetalheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalheViewController.swift; sourceTree = "<group>"; };
+		AC56BDCE1F01A56600FF7610 /* SafModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SafModel.xcdatamodel; sourceTree = "<group>"; };
+		AC56BDD01F01AA6000FF7610 /* CoreDataSaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaf.swift; sourceTree = "<group>"; };
 		AC668D131ED4B2E100038EB6 /* Saf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Saf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC668D161ED4B2E100038EB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC668D181ED4B2E200038EB6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 			children = (
 				AC668D161ED4B2E100038EB6 /* AppDelegate.swift */,
 				AC668D181ED4B2E200038EB6 /* ViewController.swift */,
+				AC56BDD01F01AA6000FF7610 /* CoreDataSaf.swift */,
 				AC668D2C1ED4C1E900038EB6 /* TransacoesViewControler.swift */,
 				AC38768A1EDA0FD700B55CDB /* DetalheViewController.swift */,
 				AC38584D1ED4CAD80049D331 /* transacaoCelula.swift */,
@@ -78,6 +83,7 @@
 				AC668D1D1ED4B2E200038EB6 /* Assets.xcassets */,
 				AC668D1F1ED4B2E200038EB6 /* LaunchScreen.storyboard */,
 				AC668D221ED4B2E200038EB6 /* Info.plist */,
+				AC56BDCD1F01A56600FF7610 /* SafModel.xcdatamodeld */,
 			);
 			path = Saf;
 			sourceTree = "<group>";
@@ -160,8 +166,10 @@
 				AC668D2F1ED4C56C00038EB6 /* Transacao.swift in Sources */,
 				AC668D291ED4B40600038EB6 /* contaCelula.swift in Sources */,
 				AC38768B1EDA0FD700B55CDB /* DetalheViewController.swift in Sources */,
+				AC56BDD11F01AA6100FF7610 /* CoreDataSaf.swift in Sources */,
 				AC668D2B1ED4B68900038EB6 /* Conta.swift in Sources */,
 				AC668D2D1ED4C1E900038EB6 /* TransacoesViewControler.swift in Sources */,
+				AC56BDCF1F01A56600FF7610 /* SafModel.xcdatamodeld in Sources */,
 				AC38584E1ED4CAD80049D331 /* transacaoCelula.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +337,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AC56BDCD1F01A56600FF7610 /* SafModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AC56BDCE1F01A56600FF7610 /* SafModel.xcdatamodel */,
+			);
+			currentVersion = AC56BDCE1F01A56600FF7610 /* SafModel.xcdatamodel */;
+			path = SafModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AC668D0B1ED4B2E100038EB6 /* Project object */;
 }

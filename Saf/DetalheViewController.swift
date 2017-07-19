@@ -15,15 +15,19 @@ class DetalheViewController: UIViewController {
     @IBOutlet weak var valorTextField: UITextField!
     @IBOutlet weak var comentarioTextView: UITextView!
     
-    var detalheTransacao: Transacao!
+    var detalheTransacao: Transactions!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        dataTextField.text = detalheTransacao.data
-        descricaoTextField.text = detalheTransacao.descricao
-        valorTextField.text = formatCurrency(value: Double(detalheTransacao.valor))
-        comentarioTextView.text = detalheTransacao.comentario
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+
+        
+        dataTextField.text = dateFormatter.string(from: detalheTransacao.date! as Date)
+        descricaoTextField.text = detalheTransacao.transaction_description
+        valorTextField.text = formatCurrency(value: Double(detalheTransacao.ammount!))
+        comentarioTextView.text = detalheTransacao.comments
   
     }
     
