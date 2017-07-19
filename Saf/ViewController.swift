@@ -20,35 +20,42 @@ func formatCurrency(value: Double) -> String {
 
 class ViewController: UITableViewController {
 
-    var contaBanco: [Conta] = []
-    var contaCartao: [Conta] = []
-    var contaInvestimento: [Conta] = []
+    var coreDataSaf: CoreDataSaf!
+    var accounts: [Accounts] = []
+
+    
+    var contaBanco: [Accounts] = []
+    var contaCartao: [Accounts] = []
+    var contaInvestimento: [Accounts] = []
+    
+    var positionAccount: [Int16] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var conta: Conta
+        // var conta: Accounts
+
+        //recuperar Accounts
+        self.coreDataSaf = CoreDataSaf()
         
-        conta = Conta(tipo:0, descricao: "Intermedium", saldo: 13500.00)
-        contaBanco.append( conta )
+        self.coreDataSaf.deleteAllData(entity: "Accounts")
+        self.coreDataSaf.deleteAllData(entity: "Transactions")
+        self.coreDataSaf.addAllAccounts()
+        self.coreDataSaf.addAllTransactions()
+        self.accounts = self.coreDataSaf.retrieveAllAccounts()
         
-        conta = Conta(tipo:0, descricao: "Sofisa", saldo: 250.00)
-        contaBanco.append( conta )
-        
-        conta = Conta(tipo:1, descricao: "Nubank", saldo: -4450.00)
-        contaCartao.append( conta )
-        
-        conta = Conta(tipo:1, descricao: "Digio", saldo: -450.00)
-        contaCartao.append( conta )
-        
-        conta = Conta(tipo:2, descricao: "Tesouro", saldo: 203450.00)
-        contaInvestimento.append( conta )
-        
-        conta = Conta(tipo:2, descricao: "Acoes", saldo: 123140.00)
-        contaInvestimento.append( conta )
-        
-        
+        for account in accounts {
+            if account.type == 0 {
+               contaBanco.append( account )
+            }
+            if account.type == 1 {
+               contaCartao.append( account )
+            }
+            if account.type == 2 {
+                contaInvestimento.append( account )
+            }
+        }
     }
     
     
@@ -79,7 +86,7 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let conta: Conta
+        let conta: Accounts
 
         if indexPath.section == 0 {
            conta = self.contaBanco[ indexPath.row ]
@@ -92,13 +99,32 @@ class ViewController: UITableViewController {
         let celula = tableView.dequeueReusableCell(withIdentifier: celulaReuso, for: indexPath) as! ContaCelula
         
 
-        celula.contaLabel.text = conta.descricao
-        celula.saldoLabel.text = formatCurrency(value: Double(conta.saldo))
+        celula.contaLabel.text = conta.accountName
+        celula.saldoLabel.text = formatCurrency(value: Double(conta.balance))
+        celula.idLabel.text = String(conta.accountID)
+        
+        positionAccount.append(conta.accountID)
         
         return celula
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "detalheAccount" {
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                
+//                let contaSelecionada = String( self.accounts[ indexPath.row ].accountID )
+                let contaSelecionada = String( positionAccount[indexPath.row] )
+                let viewControleDestino = segue.destination as! TransacoesViewController
+                viewControleDestino.detalheAccount = contaSelecionada
+
+// Solução - Ordenar a query de forma a retornar na ordem das seçoes. ???????????????
+                
+            }
+        }
+    }
 
     
     

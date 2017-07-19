@@ -11,14 +11,16 @@ import UIKit
 
 class Conta: NSObject {
     
-    var tipo: Int!
-    var descricao: String!
-    var saldo: Float!
+    var accountID: Int!
+    var account: String!
+    var type: Int!
+    var balance: Float!
     
-    init(tipo:Int, descricao: String, saldo:Float){
-        self.tipo = tipo
-        self.descricao = descricao
-        self.saldo = saldo
+    init(accountID:Int, account: String, type:Int, balance:Float){
+        self.accountID = accountID
+        self.account = account
+        self.type = type
+        self.balance = balance
     }
     
     

@@ -12,5 +12,6 @@ class ContaCelula: UITableViewCell {
     
     @IBOutlet weak var contaLabel: UILabel!
     @IBOutlet weak var saldoLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
 }
 
