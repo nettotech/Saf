@@ -44,9 +44,9 @@ class TransacoesViewController: UITableViewController {
         
         celula.dataLabel.text = dateFormatter.string(from: transaction.date! as Date)
         celula.descricaoLabel.text = transaction.transaction_description
-        celula.valorLabel.text = formatCurrency(value: Double( transaction.ammount! ))
+        celula.valorLabel.text = formatCurrency(value: Double(Float( transaction.ammount )))
         celula.comentarioLabel.text = transaction.comments
-        celula.saldoLabel.text = formatCurrency(value: Double( transaction.ammount! ))
+        celula.saldoLabel.text = formatCurrency(value: Double(Float( transaction.ammount )))
         
         return celula
         
@@ -55,11 +55,6 @@ class TransacoesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-    }
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -74,6 +69,24 @@ class TransacoesViewController: UITableViewController {
             }
     }
     }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            let transaction = self.transactions[ indexPath.row ]
+            self.coreDataSaf.deleteTransaction(transaction: transaction)
+            
+            //atualiza listagem
+            //            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            //            self.tableView.reloadData()
+            
+            _ = self.navigationController?.popToRootViewController(animated: true)
+            
+        }
+        
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

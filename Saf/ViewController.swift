@@ -17,7 +17,6 @@ func formatCurrency(value: Double) -> String {
     return result!;
 }
 
-
 class ViewController: UITableViewController {
 
     var coreDataSaf: CoreDataSaf!
@@ -34,30 +33,40 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // var conta: Accounts
-
         //recuperar Accounts
         self.coreDataSaf = CoreDataSaf()
         
+///*
         self.coreDataSaf.deleteAllData(entity: "Accounts")
         self.coreDataSaf.deleteAllData(entity: "Transactions")
         self.coreDataSaf.addAllAccounts()
         self.coreDataSaf.addAllTransactions()
+//*/
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         self.accounts = self.coreDataSaf.retrieveAllAccounts()
+
+        contaBanco.removeAll()
+        contaCartao.removeAll()
+        contaInvestimento.removeAll()
         
         for account in accounts {
             if account.type == 0 {
-               contaBanco.append( account )
+                contaBanco.append( account )
             }
             if account.type == 1 {
-               contaCartao.append( account )
+                contaCartao.append( account )
             }
             if account.type == 2 {
                 contaInvestimento.append( account )
             }
         }
+        
+        self.tableView.reloadData()
+        
     }
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
