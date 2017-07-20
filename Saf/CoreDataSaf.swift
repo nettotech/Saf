@@ -66,19 +66,44 @@ class CoreDataSaf {
         
     }
 
-    func retrieveAllTransactions() -> [Transactions] {
+    func retrieveAllAccounts() -> [Accounts] {
         
         let context = self.getContext()
         
+        let requisicao = Accounts.fetchRequest() as NSFetchRequest<Accounts>
+        requisicao.predicate = NSPredicate(format: "accountDeleted <> 1")
+        
         do{
-            let transactions = try context.fetch( Transactions.fetchRequest() ) as! [Transactions]
+            let accounts = try context.fetch(requisicao)
             
-            if transactions.count == 0 {
-                self.addAllTransactions()
-                return self.retrieveAllTransactions()
+            if accounts.count == 0 {
+                self.addAllAccounts()
+                return self.retrieveAllAccounts()
             }
             
-            return transactions
+            return accounts
+        }catch{}
+        
+        return []
+        
+    }
+
+    func retrieveAllCategories() -> [Categories] {
+        
+        let context = self.getContext()
+        
+        let requisicao = Categories.fetchRequest() as NSFetchRequest<Categories>
+        requisicao.predicate = NSPredicate(format: "categoryDeleted <> 1")
+        
+        do{
+            let categories = try context.fetch(requisicao)
+            
+            if categories.count == 0 {
+                self.addAllCategories()
+                return self.retrieveAllCategories()
+            }
+            
+            return categories
         }catch{}
         
         return []
@@ -114,6 +139,29 @@ class CoreDataSaf {
         
     }
 
+    //adicionar todos as contas
+    func addAllCategories(){
+        
+        let context = self.getContext()
+        
+        self.createCategory(categoryID: 1, categoryName: "Contas residenciais")
+        self.createCategory(categoryID: 1, categoryName: "Educação")
+        self.createCategory(categoryID: 1, categoryName: "Mercado")
+        self.createCategory(categoryID: 1, categoryName: "Saúde")
+        self.createCategory(categoryID: 1, categoryName: "Transporte")
+        self.createCategory(categoryID: 1, categoryName: "Empregados domésticos")
+        self.createCategory(categoryID: 1, categoryName: "TV / Internet / Telefone")
+        self.createCategory(categoryID: 1, categoryName: "Outros gastos")
+        self.createCategory(categoryID: 1, categoryName: "Compras")
+        self.createCategory(categoryID: 1, categoryName: "Viagem")
+        
+        do{
+            try context.save()
+        }catch{}
+        
+    }
+    
+    
     //adicionar todos as transacoes
     func addAllTransactions(){
         
@@ -122,16 +170,16 @@ class CoreDataSaf {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         
-        self.createTransaction(transactionID: 1, accountID: 1, ammount: -149.51, categoryID: 1, comments: "#luz # energia", date: dateFormatter.date(from: "03/05/2017")!, transaction_description: "Pagamento conta luz BANDEIRANTE ENERGIA S A", type: 1)
-        self.createTransaction(transactionID: 2, accountID: 1, ammount: -124.98, categoryID: 1, comments: "### vivo fibra", date: dateFormatter.date(from: "04/05/2017")!, transaction_description: "Pagto conta telefone TELECOMUNICACOES DE", type: 1)
-        self.createTransaction(transactionID: 3, accountID: 1, ammount: -68.68, categoryID: 1, comments: "#luz # energia", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "Pagamento conta gas COMGAS", type: 1)
-        self.createTransaction(transactionID: 4, accountID: 2, ammount: -0.12, categoryID: 1, comments: "#taxa", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "IOF", type: 1)
-        self.createTransaction(transactionID: 5, accountID: 2, ammount: -50.90, categoryID: 1, comments: "#alimentacao Jantar iFood", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "IFOOD COM", type: 1)
-        self.createTransaction(transactionID: 6, accountID: 2, ammount: 7500.00, categoryID: 1, comments: "#transferencia C", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "Transferido da poupança 01/01 7027 109826-8 MARIO CESAR NT", type: 1)
-        self.createTransaction(transactionID: 7, accountID: 3, ammount: -9944.60, categoryID: 1, comments: "## Nubank", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "Pagamento recebido", type: 1)
-        self.createTransaction(transactionID: 8, accountID: 3, ammount: -263.93, categoryID: 1, comments: "#mercado", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "Cartão 31/12 11:46 ROLDAO SAO JOSE DOS", type: 1)
-        self.createTransaction(transactionID: 9, accountID: 3, ammount: -23.80, categoryID: 1, comments: "## Google", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "Google Svcsapps Campu", type: 1)
-        self.createTransaction(transactionID: 10, accountID: 3, ammount: -29.70, categoryID: 1, comments: "#marmitex - Almoço Familia", date: dateFormatter.date(from: "05/05/2017")!, transaction_description: "Reaiches e Cia", type: 1)
+        self.createTransaction(transactionID: 1, accountID: 1, ammount: -149.51, categoryID: 1, comments: "#luz # energia", date: dateFormatter.date(from: "03/07/2017")!, transaction_description: "Pagamento conta luz BANDEIRANTE ENERGIA S A", type: 1)
+        self.createTransaction(transactionID: 2, accountID: 1, ammount: -124.98, categoryID: 1, comments: "### vivo fibra", date: dateFormatter.date(from: "04/07/2017")!, transaction_description: "Pagto conta telefone TELECOMUNICACOES DE", type: 1)
+        self.createTransaction(transactionID: 3, accountID: 1, ammount: -68.68, categoryID: 1, comments: "#luz # energia", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "Pagamento conta gas COMGAS", type: 1)
+        self.createTransaction(transactionID: 4, accountID: 2, ammount: -0.12, categoryID: 1, comments: "#taxa", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "IOF", type: 1)
+        self.createTransaction(transactionID: 5, accountID: 2, ammount: -50.90, categoryID: 1, comments: "#alimentacao Jantar iFood", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "IFOOD COM", type: 1)
+        self.createTransaction(transactionID: 6, accountID: 2, ammount: 7500.00, categoryID: 1, comments: "#transferencia C", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "Transferido da poupança 01/01 7027 109826-8 MARIO CESAR NT", type: 1)
+        self.createTransaction(transactionID: 7, accountID: 3, ammount: -9944.60, categoryID: 1, comments: "## Nubank", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "Pagamento recebido", type: 1)
+        self.createTransaction(transactionID: 8, accountID: 3, ammount: -263.93, categoryID: 1, comments: "#mercado", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "Cartão 31/12 11:46 ROLDAO SAO JOSE DOS", type: 1)
+        self.createTransaction(transactionID: 9, accountID: 3, ammount: -23.80, categoryID: 1, comments: "## Google", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "Google Svcsapps Campu", type: 1)
+        self.createTransaction(transactionID: 10, accountID: 3, ammount: -29.70, categoryID: 1, comments: "#marmitex - Almoço Familia", date: dateFormatter.date(from: "05/07/2017")!, transaction_description: "Reaiches e Cia", type: 1)
                 
         do{
             try context.save()
@@ -298,6 +346,71 @@ class CoreDataSaf {
         
         // transaction.accountDeleted = 1
         context.delete( transaction )
+        
+        do{
+            try context.save()
+        }catch{}
+    }
+
+    //----
+    //criar as Categorias
+    func createCategory(categoryID: Int16, categoryName: String){
+        
+        let context = self.getContext()
+        let category = Categories(context: context )
+        category.categoryID = categoryID
+        category.categoryName = categoryName
+        category.categoryDeleted = 0
+    }
+    
+    func updateCategory(category: Categories, categoryName: String){
+        
+        let context = self.getContext()
+        category.categoryName = categoryName
+        
+        do{
+            try context.save()
+        }catch{}
+    }
+    
+    func addCategory(categoryName: String){
+        
+        let context = self.getContext()
+        let category = Categories(context: context )
+        
+        category.categoryID = retrieveNextCategoryID()
+        category.categoryName = categoryName
+        category.categoryDeleted = 0
+        
+        do{
+            try context.save()
+        }catch{}
+    }
+    
+    func retrieveNextCategoryID() -> Int16 {
+        
+        var categoryMax : (Int16) = 0
+        var category: [Categories] = []
+        categories = retrieveAllCategories()
+        
+        for category in categories {
+            if category.categoryID > categoryMax {
+                categoryMax = category.categoryID
+            }
+        }
+        
+        categoryMax += 1
+        
+        return categoryMax
+        
+    }
+    
+    func deleteCategory(category: Categories){
+        
+        let context = self.getContext()
+        
+        category.categoryDeleted = 1
+        //        context.delete( account )
         
         do{
             try context.save()

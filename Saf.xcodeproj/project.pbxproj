@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC27BD041F216AC200933EFA /* DetailCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27BD031F216AC200933EFA /* DetailCategoryViewController.swift */; };
+		AC27BD061F216B3B00933EFA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27BD051F216B3B00933EFA /* CategoryViewController.swift */; };
 		AC38584E1ED4CAD80049D331 /* transacaoCelula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38584D1ED4CAD80049D331 /* transacaoCelula.swift */; };
 		AC38768B1EDA0FD700B55CDB /* DetalheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38768A1EDA0FD700B55CDB /* DetalheViewController.swift */; };
 		AC56BDCF1F01A56600FF7610 /* SafModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC56BDCD1F01A56600FF7610 /* SafModel.xcdatamodeld */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC27BD031F216AC200933EFA /* DetailCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCategoryViewController.swift; sourceTree = "<group>"; };
+		AC27BD051F216B3B00933EFA /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		AC38584D1ED4CAD80049D331 /* transacaoCelula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = transacaoCelula.swift; sourceTree = "<group>"; };
 		AC38768A1EDA0FD700B55CDB /* DetalheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalheViewController.swift; sourceTree = "<group>"; };
 		AC56BDCE1F01A56600FF7610 /* SafModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SafModel.xcdatamodel; sourceTree = "<group>"; };
@@ -80,8 +84,10 @@
 				AC56BDD01F01AA6000FF7610 /* CoreDataSaf.swift */,
 				AC668D181ED4B2E200038EB6 /* ViewController.swift */,
 				AC59B76D1F2012EC00BAB4DB /* AccountViewController.swift */,
+				AC27BD051F216B3B00933EFA /* CategoryViewController.swift */,
 				AC668D2C1ED4C1E900038EB6 /* TransacoesViewControler.swift */,
 				AC59B7711F201A4100BAB4DB /* DetailAccountViewController.swift */,
+				AC27BD031F216AC200933EFA /* DetailCategoryViewController.swift */,
 				AC38768A1EDA0FD700B55CDB /* DetalheViewController.swift */,
 				AC38584D1ED4CAD80049D331 /* transacaoCelula.swift */,
 				AC59B76F1F20169E00BAB4DB /* AccountCell.swift */,
@@ -171,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC668D191ED4B2E200038EB6 /* ViewController.swift in Sources */,
+				AC27BD041F216AC200933EFA /* DetailCategoryViewController.swift in Sources */,
 				AC668D171ED4B2E100038EB6 /* AppDelegate.swift in Sources */,
 				AC668D2F1ED4C56C00038EB6 /* Transacao.swift in Sources */,
 				AC668D291ED4B40600038EB6 /* contaCelula.swift in Sources */,
@@ -179,6 +186,7 @@
 				AC56BDD11F01AA6100FF7610 /* CoreDataSaf.swift in Sources */,
 				AC668D2B1ED4B68900038EB6 /* Conta.swift in Sources */,
 				AC59B7721F201A4100BAB4DB /* DetailAccountViewController.swift in Sources */,
+				AC27BD061F216B3B00933EFA /* CategoryViewController.swift in Sources */,
 				AC668D2D1ED4C1E900038EB6 /* TransacoesViewControler.swift in Sources */,
 				AC59B76E1F2012EC00BAB4DB /* AccountViewController.swift in Sources */,
 				AC56BDCF1F01A56600FF7610 /* SafModel.xcdatamodeld in Sources */,

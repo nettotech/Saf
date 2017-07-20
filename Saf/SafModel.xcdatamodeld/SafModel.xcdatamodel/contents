@@ -9,8 +9,9 @@
         <relationship name="relAccTra" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transactions" inverseName="relTraAcc" inverseEntity="Transactions" syncable="YES"/>
     </entity>
     <entity name="Categories" representedClassName="Categories" syncable="YES" codeGenerationType="class">
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="categoryDeleted" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="categoryID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="relCatTra" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transactions" inverseName="relTraCat" inverseEntity="Transactions" syncable="YES"/>
     </entity>
     <entity name="Transactions" representedClassName="Transactions" syncable="YES" codeGenerationType="class">
@@ -27,7 +28,7 @@
     </entity>
     <elements>
         <element name="Accounts" positionX="-54" positionY="9" width="128" height="135"/>
-        <element name="Categories" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Categories" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="Transactions" positionX="-36" positionY="27" width="128" height="195"/>
     </elements>
 </model>
